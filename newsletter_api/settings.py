@@ -72,7 +72,7 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 CSRF_COOKIE_HTTPONLY = False
-CSRF_COOKIE_SECURE = False  # Set to True in production with HTTPS
+CSRF_COOKIE_SECURE = True  # Enable for HTTPS (production)
 CSRF_COOKIE_SAMESITE = 'Lax'
 
 ROOT_URLCONF = 'newsletter_api.urls'
