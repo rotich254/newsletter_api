@@ -2,6 +2,7 @@
 from django.contrib import admin
 from django.urls import path
 from subscriber.views import (
+    health_check,
     subscribe_newsletter, 
     contact,
     get_subscribers,
@@ -18,6 +19,7 @@ from subscriber.authentication import (
 from rest_framework_simplejwt.views import TokenRefreshView
 
 urlpatterns = [
+    path('', health_check, name='health_check'),
     path('admin/', admin.site.urls),
     
     # Public endpoints

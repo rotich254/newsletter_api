@@ -11,6 +11,17 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
 
+
+@csrf_exempt
+def health_check(request):
+    """Health check endpoint for server monitoring"""
+    return JsonResponse({
+        "status": "ok",
+        "service": "Newsletter API",
+        "version": "1.0.0"
+    }, status=200)
+
+
 @csrf_exempt
 def subscribe_newsletter(request):
     if request.method == "OPTIONS":
