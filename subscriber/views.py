@@ -55,7 +55,7 @@ def subscribe_newsletter(request):
             [email],
             fail_silently=False,
         )
-        admin_email = "rotichk254@gmail.com"  
+        admin_email = "info@softwizpro.com"
         admin_subject = "New Newsletter Subscriber"
         admin_message = f"A new user subscribed to the newsletter:\n\nEmail: {email}"
 
@@ -94,6 +94,19 @@ def contact(request):
         print(f"Email: {email}")
         print(f"Message: {message}")
         print("-" * 50)
+
+        # Send notification email to admin
+        admin_email = "info@softwizpro.com"
+        admin_subject = "New Contact Form Message"
+        admin_message = f"A new contact message was received:\n\nFrom: {email}\n\nMessage:\n{message}"
+        
+        send_mail(
+            admin_subject,
+            admin_message,
+            settings.EMAIL_HOST_USER,
+            [admin_email],
+            fail_silently=True,
+        )
 
         return JsonResponse({"message": "Message sent successfully!"}, status=201)
 
